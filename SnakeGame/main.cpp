@@ -49,7 +49,7 @@ void Updata(Snake& snake, Apple& apple, PositionInfoGame& positionInfoGame)
 	while (true)
 	{
 		SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), positionInfoGame.PositionInfo);
-		std::cout << " Score: " << snake._lengthSnake;
+		std::cout << " Score: " << snake._lengthSnake << "                                     ";
 
 		CleanSnake(snake);
 
