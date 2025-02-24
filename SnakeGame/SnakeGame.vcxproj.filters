@@ -13,21 +13,57 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Model">
+      <UniqueIdentifier>{9985cce8-e897-4cdd-a7b9-b5ce0332cc05}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Settings">
+      <UniqueIdentifier>{e869a573-e469-4bbf-a5a1-4dd30053d31b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Colors">
+      <UniqueIdentifier>{df21d06a-1494-475c-9fbc-40af8435da87}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Файлы ресурсов</Filter>
     </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Snake.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Item.cpp">
+      <Filter>Model</Filter>
+    </ClCompile>
+    <ClCompile Include="Setting.cpp">
+      <Filter>Settings</Filter>
+    </ClCompile>
+    <ClCompile Include="Color.cpp">
+      <Filter>Colors</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Interface.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>Model</Filter>
+    </ClInclude>
     <ClInclude Include="Snake.h">
-      <Filter>Файлы заголовков</Filter>
+      <Filter>Model</Filter>
     </ClInclude>
-    <ClInclude Include="Apple.h">
-      <Filter>Файлы заголовков</Filter>
+    <ClInclude Include="Setting.h">
+      <Filter>Settings</Filter>
     </ClInclude>
-    <ClInclude Include="PositionInfoGame.h">
-      <Filter>Файлы заголовков</Filter>
+    <ClInclude Include="Color.h">
+      <Filter>Colors</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

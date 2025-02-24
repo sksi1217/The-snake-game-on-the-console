@@ -1,15 +1,31 @@
 #pragma once
+#include "GameObject.h"
+#include "Color.h"
 #include <deque>
+#include <windows.h>
 
-class Snake
-{
+class Snake : public GameObject {
 public:
-	COORD _headPosition = { 0, 0 };
-	std::deque<COORD> _body;
+    COORD _headPosition;
+    std::deque<COORD> _tail; // тело
+    int _lengthSnake = 0;
+    char _lastKeyPressed = 'w';
+    char _BodySnakeSprite = '*';
+    char _headSnakeSprite = 'O';
 
-	int _lengthSnake = 0;
+    Snake();
 
-	char _lastKeyPressed = 'w';
-	char _BodySnakeSprite = '*';
-	char _headSnakeSprite = 'O';
+    void Update() override;
+
+    void Draw() override;
+
+    void Grow();
+
+    bool CheckCollision(COORD position) const;
+
+private:
+    void Move();
+    void CleanTail();
+    void DrawHead();
+    void DrawTail();
 };
