@@ -1,0 +1,19 @@
+# Игнорировать временные файлы Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Игнорировать файлы LFS
+.gitattributes
+
+# Игнорировать двоичные файлы и кэш
+bin/
+obj/
+x64/
+Debug/
+Release/
+
+# Игнорировать большие файлы
+*.ipch
