@@ -4,7 +4,9 @@
 void Game::Start() {
 	system("mode con: cols=51 lines=23");
 
-	Color::SetTextColor(Color::BROWN);
+	snake._lengthSnake = 0;
+	snake._tail.clear();
+	snake._lastKeyPressed = 'w';
 
 	Setting::HideCursor();
 	Setting::sizeWindow();
@@ -18,6 +20,8 @@ void Game::Start() {
 
 	snake._headPosition.X = centerX;
 	snake._headPosition.Y = centerY;
+
+	
 
 	GenerateItem();
 }
@@ -62,7 +66,6 @@ void Game::HandleInput() {
 void Game::CheckCollision() {
 	if (snake.CheckCollision(snake._headPosition)) {
 		IsGame = false;
-		//ResetGame();
 	}
 
 	if (snake._headPosition.X == item._itemPosition.X && snake._headPosition.Y == item._itemPosition.Y)
@@ -92,21 +95,38 @@ void Game::ResetGame() {
 		"|_____||__,||_|_|_||___|  |_____| \\_/ |___||_|  "
 	};
 
+	Color::SetTextColor(Color::RED);
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), COORD{ 0, 0 });
 	for (const auto& line : text) {
 		std::cout << line << "\n";
 	}
+	Color::ResetColors();
+
+	Color::SetTextColor(Color::LIGHT_MAGENTA);
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), COORD{ 0, 5 });
-	std::cout << "Your score: " << snake._lengthSnake << std::endl;
+	std::cout << "Your score: ";
+	Color::ResetColors();
+
+	Color::SetTextColor(Color::MAGENTA);
+	std::cout << snake._lengthSnake << std::endl;
+	Color::ResetColors();
 
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), COORD{ 0, 7 });
 
 	char selection;
 	while (true) {
+		Color::SetTextColor(Color::LIGHT_GREEN);
 		std::cout << "You lost!" << std::endl
-			<< "Play again?" << std::endl
-			<< "Y(Yes)/N(No): ";
+			<< "Play again?" << std::endl;
+		Color::ResetColors();
+
+		Color::SetTextColor(Color::LIGHT_CYAN);
+		std::cout << "Y(Yes)/N(No): ";
+		Color::ResetColors();
+
+		Color::SetTextColor(Color::DARK_GREEN);
 		std::cin >> selection;
+		Color::ResetColors();
 
 		if (selection == 'Y' || selection == 'y' || selection == 'д') {
 			restart = true; // Флаг для перезапуска

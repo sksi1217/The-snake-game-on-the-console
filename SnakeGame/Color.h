@@ -6,7 +6,6 @@ public:
     // Определение базовых цветов
     static const WORD BLACK;            // Черный
     static const WORD BLUE;             // Синий
-    static const WORD GREEN;            // Зеленый
     static const WORD DARK_GREEN;       // Зеленый (темно-зеленый)
     static const WORD CYAN;             // Голубой
     static const WORD RED;              // Красный
