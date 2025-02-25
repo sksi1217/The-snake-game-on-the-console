@@ -1,4 +1,3 @@
-#pragma once
 #include "Snake.h"
 #include <iostream>
 
@@ -41,7 +40,7 @@ void Snake::Move() {
 	case 'd': _headPosition.X+=2; break;
 	}
 
-	// Обработка столкновений со стенами
+	// ГЋГЎГ°Г ГЎГ®ГІГЄГ  Г±ГІГ®Г«ГЄГ­Г®ГўГҐГ­ГЁГ© Г±Г® Г±ГІГҐГ­Г Г¬ГЁ
 	if (_headPosition.X < 1) _headPosition.X = 48;
 	if (_headPosition.X > 48) _headPosition.X = 2;
 	if (_headPosition.Y < 1) _headPosition.Y = 18;
@@ -60,7 +59,7 @@ void Snake::CleanTail() {
 }
 
 void Snake::DrawHead() {
-	// Устанавливаем цвет
+	// Г“Г±ГІГ Г­Г ГўГ«ГЁГўГ ГҐГ¬ Г¶ГўГҐГІ
 	Color::SetTextColor(Color::ORANGE);
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), _headPosition);
 	std::cout << _headSnakeSprite;
@@ -68,7 +67,7 @@ void Snake::DrawHead() {
 }
 
 void Snake::DrawTail() {
-	// Устанавливаем цвет
+	// Г“Г±ГІГ Г­Г ГўГ«ГЁГўГ ГҐГ¬ Г¶ГўГҐГІ
 	Color::SetTextColor(Color::LIGHT_ORANGE);
 	for (const auto& segment : _tail) {
 		SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), segment);
