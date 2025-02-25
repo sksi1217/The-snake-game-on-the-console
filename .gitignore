@@ -1,19 +1,30 @@
-# Игнорировать временные файлы Visual Studio
+# Игнорирование временных файлов и папок Visual Studio
 .vs/
 *.suo
 *.user
 *.userosscache
 *.sln.docstates
 
-# Игнорировать файлы LFS
-.gitattributes
-
-# Игнорировать двоичные файлы и кэш
+# Игнорирование выходных данных сборки
 bin/
 obj/
-x64/
 Debug/
 Release/
 
-# Игнорировать большие файлы
-*.ipch
+# Игнорирование файлов NuGet
+packages/
+*.nuget.props
+*.nuget.targets
+
+# Игнорирование файлов ReSharper
+_ReSharper.*/
+*.ReSharper
+
+# Игнорирование временных файлов
+*.tmp
+*.log
+*.bak
+*.cache
+
+# Игнорирование файлов тестирования
+TestResults/
