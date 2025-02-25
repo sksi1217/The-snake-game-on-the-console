@@ -7,7 +7,6 @@ public:
     static HANDLE hConsole;
     static WORD originalColor;
 
-    // Вспомогательные функции
     static int getConsoleWidth();
 
     static int getConsoleHeight();

@@ -6,16 +6,12 @@
 class Art
 {
 public:
-    // Метод для получения текста победы
     static const std::vector<std::string>& GetWinText();
 
-    // Метод для получения текста Game Over
     static const std::vector<std::string>& GetGameOverText();
 
-    // Метод для получения текста читерства
     static const std::vector<std::string>& GetCheatingText();
 
-    // Метод для вывода текста на экран
     static void PrintText(const std::vector<std::string>& text);
 
 private:

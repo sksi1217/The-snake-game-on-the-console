@@ -1,9 +1,8 @@
 #include "Setting.h"
 
-HANDLE Setting::hConsole = nullptr; // Инициализация дескриптора консоли
-WORD Setting::originalColor = 0;    // Инициализация исходного цвета
+HANDLE Setting::hConsole = nullptr;
+WORD Setting::originalColor = 0;
 
-// Вспомогательные функции
 int Setting::getConsoleWidth() {
     CONSOLE_SCREEN_BUFFER_INFO csbi;
     GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);

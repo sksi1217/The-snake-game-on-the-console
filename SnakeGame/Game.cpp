@@ -1,11 +1,11 @@
 ﻿#include "Game.h"
-#include <iostream>
 #include "Art.h"
+#include <iostream>
 
 void Game::Start() {
 	system("mode con: cols=51 lines=23");
 
-	//snake._lengthSnake = 0;
+	snake._lengthSnake = 0;
 	snake._tail.clear();
 	snake._lastKeyPressed = 'w';
 
@@ -32,7 +32,6 @@ void Game::Update() {
 		Info();
 		MapBorder();
 
-		// Обработка ввода, обновление змеи, проверка столкновений
 		HandleInput();
 		snake.Update();
 
@@ -41,7 +40,7 @@ void Game::Update() {
 		snake.Draw();
 		item.Draw();
 
-		Sleep(100); // Задержка между кадрами
+		Sleep(100);
 	}
 	ResetGame();
 }
@@ -83,8 +82,7 @@ void Game::GenerateItem() {
 	if (snake._lengthSnake < 432)
 	{
 		while (!isPositionValid) {
-			// Генерируем случайную позицию для предмета
-			Item.X = Setting::generatePosistion(2, 24) * 2; // выравнивания по сетке
+			Item.X = Setting::generatePosistion(2, 24) * 2;
 			Item.Y = Setting::generatePosistion(1, 18);
 
 			isPositionValid = true;
@@ -101,7 +99,6 @@ void Game::GenerateItem() {
 			}
 		}
 
-		// Устанавливаем позицию предмета
 		item.SetPosition(Item.X, Item.Y);
 	}
 	else
@@ -164,7 +161,7 @@ void Game::ResetGame() {
 		Color::ResetColors();
 
 		if (selection == 'Y' || selection == 'y') {
-			restart = true; // Флаг для перезапуска
+			restart = true;
 			break;
 		}
 		else if (selection == 'N' || selection == 'n') {
@@ -184,19 +181,18 @@ void Game::ResetGame() {
 }
 
 void Game::MapBorder() {
-	// Устанавливаем цвет
 	Color::SetTextColor(Color::DARK_GRAY);
-	// Верхняя граница
+	// Up border
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), COORD{ 0, 0 });
 	std::cout << std::string(Setting::getConsoleWidth(), '~');
 
-	// Нижние границы
+	// Down border
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), COORD{ 0, 19 });
 	std::cout << std::string(Setting::getConsoleWidth(), '~');
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), COORD{ 0, 22 });
 	std::cout << std::string(Setting::getConsoleWidth(), '~');
 
-	// Левая и правая границы
+	// Left and Right border
 	for (size_t i = 0; i < Setting::getConsoleHeight(); ++i) {
 		SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), COORD{ 1, (short)i });
 		std::cout << "|";
@@ -208,12 +204,10 @@ void Game::MapBorder() {
 
 void Game::Info() {
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), COORD{ 2, 20 });
-	// Устанавливаем цвет
 	Color::SetTextColor(Color::LIGHT_MAGENTA);
 	std::cout << "Score: ";
 	Color::ResetColors();
 
-	// Устанавливаем цвет
 	Color::SetTextColor(Color::MAGENTA);
 	std::cout << snake._lengthSnake << std::string(30, ' ');
 	Color::ResetColors();

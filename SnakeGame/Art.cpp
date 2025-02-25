@@ -1,6 +1,5 @@
 #include "Art.h"
 
-// Определение статических переменных
 std::vector<std::string> Art::text_win = {
     " _ _ _ _     ",
     "| | | |_|___ ",
@@ -22,7 +21,6 @@ std::vector<std::string> Art::text_cheating = {
     "|_____|_|_|___|__,|_| |___|_|  "
 };
 
-// Методы для получения текстов
 const std::vector<std::string>& Art::GetWinText() {
     return text_win;
 }
@@ -35,7 +33,6 @@ const std::vector<std::string>& Art::GetCheatingText() {
     return text_cheating;
 }
 
-// Метод для вывода текста на экран
 void Art::PrintText(const std::vector<std::string>& text) {
     for (const auto& line : text) {
         std::cout << line << std::endl;

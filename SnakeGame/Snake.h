@@ -7,7 +7,7 @@
 class Snake : public GameObject {
 public:
     COORD _headPosition;
-    std::deque<COORD> _tail; // тело
+    std::deque<COORD> _tail;
     int _lengthSnake = 0;
     char _lastKeyPressed = 'w';
     char _BodySnakeSprite = '*';

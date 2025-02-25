@@ -21,7 +21,6 @@ private:
    void GenerateItem();
     void ResetGame();
 
-    // Èםעונפויס
     void MapBorder();
     void Info();
 };

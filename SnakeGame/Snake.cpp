@@ -40,7 +40,6 @@ void Snake::Move() {
 	case 'd': _headPosition.X+=2; break;
 	}
 
-	// Îáðàáîòêà ñòîëêíîâåíèé ñî ñòåíàìè
 	if (_headPosition.X < 1) _headPosition.X = 48;
 	if (_headPosition.X > 48) _headPosition.X = 2;
 	if (_headPosition.Y < 1) _headPosition.Y = 18;
@@ -59,7 +58,6 @@ void Snake::CleanTail() {
 }
 
 void Snake::DrawHead() {
-	// Óñòàíàâëèâàåì öâåò
 	Color::SetTextColor(Color::ORANGE);
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), _headPosition);
 	std::cout << _headSnakeSprite;
@@ -67,7 +65,6 @@ void Snake::DrawHead() {
 }
 
 void Snake::DrawTail() {
-	// Óñòàíàâëèâàåì öâåò
 	Color::SetTextColor(Color::LIGHT_ORANGE);
 	for (const auto& segment : _tail) {
 		SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), segment);
