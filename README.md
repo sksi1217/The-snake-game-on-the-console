@@ -11,3 +11,6 @@ g++ -o out\Snake.exe main.cpp Color.cpp Game.cpp Item.cpp Setting.cpp Snake.cpp 
 ```bash
 g++ -o out\Snake.exe main.cpp Color.cpp Game.cpp Item.cpp Setting.cpp Snake.cpp Art.cpp -I.
 ```
+
+
+ааааааа
