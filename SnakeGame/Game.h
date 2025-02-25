@@ -5,13 +5,10 @@
 #include "Color.h"
 #include <conio.h>
 
-
-
 class Game {
 public:
     Snake snake;
     Item item;
-
 
     bool IsGame = true;
 

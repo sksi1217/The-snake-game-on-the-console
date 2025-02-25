@@ -10,11 +10,23 @@ int main() {
 
         if (!game.IsGame) {
             char selection;
-            std::cout << "Do you want to exit the game? (Y/N): ";
-            std::cin >> selection;
+            Color::SetTextColor(Color::RED);
+            std::cout << ">:( ";
+            Color::ResetColors();
 
-            if (selection == 'Y' || selection == 'y' || selection == 'í') {
-                std::cout << "Thank you for playing!" << std::endl;
+            Color::SetTextColor(Color::LIGHT_GREEN);
+            std::cout << "Do you want to exit the game? " << std::endl;
+            Color::ResetColors();
+
+            Color::SetTextColor(Color::LIGHT_CYAN);
+            std::cout << "Y(Yes)/N(No): ";
+            Color::ResetColors();
+
+            Color::SetTextColor(Color::DARK_GREEN);
+            std::cin >> selection;
+            Color::ResetColors();
+
+            if (selection == 'Y' || selection == 'y') {
                 break;
             }
         }

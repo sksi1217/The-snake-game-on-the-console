@@ -1,10 +1,11 @@
 ﻿#include "Game.h"
 #include <iostream>
+#include "Art.h"
 
 void Game::Start() {
 	system("mode con: cols=51 lines=23");
 
-	snake._lengthSnake = 0;
+	//snake._lengthSnake = 0;
 	snake._tail.clear();
 	snake._lastKeyPressed = 'w';
 
@@ -21,7 +22,7 @@ void Game::Start() {
 	snake._headPosition.X = centerX;
 	snake._headPosition.Y = centerY;
 
-	
+
 
 	GenerateItem();
 }
@@ -76,30 +77,64 @@ void Game::CheckCollision() {
 }
 
 void Game::GenerateItem() {
-	item.SetPosition(Setting::generatePosistion(2, 24) * 2, Setting::generatePosistion(1, 18));
+	COORD Item;
+	bool isPositionValid = false;
+
+	if (snake._lengthSnake < 432)
+	{
+		while (!isPositionValid) {
+			// Генерируем случайную позицию для предмета
+			Item.X = Setting::generatePosistion(2, 24) * 2; // выравнивания по сетке
+			Item.Y = Setting::generatePosistion(1, 18);
+
+			isPositionValid = true;
+
+			for (const auto& segment : snake._tail) {
+				if (segment.X == Item.X && segment.Y == Item.Y) {
+					isPositionValid = false;
+					break;
+				}
+			}
+
+			if (snake._headPosition.X == Item.X && snake._headPosition.Y == Item.Y) {
+				isPositionValid = false;
+			}
+		}
+
+		// Устанавливаем позицию предмета
+		item.SetPosition(Item.X, Item.Y);
+	}
+	else
+	{
+		IsGame = false;
+	}
 }
 
 void Game::ResetGame() {
+	std::vector<std::string> text;
 	bool restart = false;
 
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), COORD{ 0, 0 });
-
 	for (size_t i = 0; i < Setting::getConsoleHeight(); ++i) {
 		std::cout << std::string(Setting::getConsoleWidth(), ' ') << "\n";
 	}
 
-	std::vector<std::string> text = {
-		" _____                     _____                ",
-		"|   __| ___  _____  ___   |     | _ _  ___  ___ ",
-		"|  |  || .'||     || -_|  |  |  || | || -_||  _|",
-		"|_____||__,||_|_|_||___|  |_____| \\_/ |___||_|  "
-	};
-
+	if (snake._lengthSnake == 432)
+	{
+		text = Art::GetWinText();
+	}
+	else if (snake._lengthSnake > 432)
+	{
+		text = Art::GetCheatingText();
+	}
+	else
+	{
+		text = Art::GetGameOverText();
+	}
+	
 	Color::SetTextColor(Color::RED);
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), COORD{ 0, 0 });
-	for (const auto& line : text) {
-		std::cout << line << "\n";
-	}
+	Art::PrintText(text);
 	Color::ResetColors();
 
 	Color::SetTextColor(Color::LIGHT_MAGENTA);
@@ -128,11 +163,11 @@ void Game::ResetGame() {
 		std::cin >> selection;
 		Color::ResetColors();
 
-		if (selection == 'Y' || selection == 'y' || selection == 'д') {
+		if (selection == 'Y' || selection == 'y') {
 			restart = true; // Флаг для перезапуска
 			break;
 		}
-		else if (selection == 'N' || selection == 'n' || selection == 'н') {
+		else if (selection == 'N' || selection == 'n') {
 			break;
 		}
 		else {
@@ -185,7 +220,7 @@ void Game::Info() {
 
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), COORD{ 2, 21 });
 	Color::SetTextColor(Color::CYAN);
-	std::cout << "Position Apple: ";
+	std::cout << "Position Item: ";
 	Color::ResetColors();
 
 	Color::SetTextColor(Color::LIGHT_CYAN);
