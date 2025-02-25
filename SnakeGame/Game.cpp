@@ -79,7 +79,7 @@ void Game::GenerateItem() {
 	COORD Item;
 	bool isPositionValid = false;
 
-	if (snake._lengthSnake < 432)
+	if (snake._lengthSnake < 431)
 	{
 		while (!isPositionValid) {
 			Item.X = Setting::generatePosistion(2, 24) * 2;
